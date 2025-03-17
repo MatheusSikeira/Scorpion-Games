@@ -1,0 +1,59 @@
+.navbar{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        background-color: #fff200;
+        padding: 1em;
+        height: 100px;
+        z-index: 1000;
+    }
+.list{
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: auto;
+}
+
+.item{
+    margin-right: 2em;
+    color: #ffffff;
+    background-color: #000000;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+
+.item a{
+    color:#af4f00;
+    text-decoration: none;
+}
+
+
+.item a:hover{
+    color:#f84a00;
+}
+
+.logo{
+    width: 200px;
+    height: 120px;
+}
+.scorpion{
+    width: 230px;
+    height: 115px;
+}
+.logo{
+    width: 230px;
+    height: 115px;
+    align-self: center;
+    margin-right: 400px;
+}
+.subzero{
+    width: 230px;
+    height: 115px;
+}
