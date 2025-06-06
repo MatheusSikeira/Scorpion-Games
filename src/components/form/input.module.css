@@ -1,0 +1,48 @@
+/* src/styles/form/Input.module.css */
+
+.form_control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.form_control label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.form_control input,
+.form_control textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form_control input:focus,
+.form_control textarea:focus {
+  border-color: #cc0000;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.2);
+}
+
+/* Input com ícone ou validação (opcional) */
+.input-group {
+  position: relative;
+}
+
+.input-group input {
+  padding-right: 2.5rem;
+}
+
+.input-group .icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+}

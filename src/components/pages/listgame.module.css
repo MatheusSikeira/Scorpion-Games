@@ -1,0 +1,332 @@
+/* === CONTAINER PRINCIPAL === */
+
+.listContainer {
+    padding: 2rem;
+    margin-top: 80px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+.listContainer h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #850000;
+    margin-bottom: 2rem;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* === GRID DE JOGOS === */
+
+.gamesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    align-items: start;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+/* === ESTADOS DE LOADING E ERROR === */
+
+.loadingContainer,
+.errorContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.errorContainer {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* === MEDIA QUERIES PARA RESPONSIVIDADE === */
+
+/* Desktop extra grande (acima de 1600px) */
+@media screen and (min-width: 1600px) {
+    .listContainer {
+        padding: 3rem;
+        max-width: 1600px;
+    }
+    
+    .listContainer h1 {
+        font-size: 3rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .gamesGrid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2.5rem;
+    }
+}
+
+/* Desktop grande (1200px - 1600px) */
+@media screen and (max-width: 1600px) {
+    .gamesGrid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+}
+
+/* Desktop médio (992px - 1200px) */
+@media screen and (max-width: 1200px) {
+    .listContainer {
+        padding: 1.5rem;
+        margin-top: 70px;
+    }
+    
+    .listContainer h1 {
+        font-size: 2.2rem;
+        margin-bottom: 1.8rem;
+    }
+    
+    .gamesGrid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.8rem;
+    }
+}
+
+/* Tablets grandes (768px - 992px) */
+@media screen and (max-width: 992px) {
+    .listContainer {
+        padding: 1.2rem;
+        margin-top: 60px;
+    }
+    
+    .listContainer h1 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .gamesGrid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+/* Tablets (576px - 768px) */
+@media screen and (max-width: 768px) {
+    .listContainer {
+        padding: 1rem;
+        margin-top: 50px;
+    }
+    
+    .listContainer h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .gamesGrid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 1.2rem;
+        padding: 0.5rem 0;
+    }
+    
+    .loadingContainer,
+    .errorContainer {
+        min-height: 40vh;
+        font-size: 1.1rem;
+    }
+}
+
+/* Smartphones grandes (480px - 576px) */
+@media screen and (max-width: 576px) {
+    .listContainer {
+        padding: 0.8rem;
+        margin-top: 40px;
+    }
+    
+    .listContainer h1 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    
+    .gamesGrid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1rem;
+    }
+}
+
+/* Smartphones (360px - 480px) */
+@media screen and (max-width: 480px) {
+    .listContainer {
+        padding: 0.6rem;
+        margin-top: 35px;
+    }
+    
+    .listContainer h1 {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .gamesGrid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+    
+    .loadingContainer,
+    .errorContainer {
+        min-height: 30vh;
+        font-size: 1rem;
+        padding: 1rem;
+        text-align: center;
+    }
+}
+
+/* Smartphones pequenos (até 360px) */
+@media screen and (max-width: 360px) {
+    .listContainer {
+        padding: 0.5rem;
+        margin-top: 30px;
+    }
+    
+    .listContainer h1 {
+        font-size: 1.2rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .gamesGrid {
+        gap: 0.6rem;
+        max-width: 300px;
+    }
+}
+
+/* === ORIENTAÇÃO LANDSCAPE PARA MOBILE === */
+
+@media screen and (max-height: 600px) and (orientation: landscape) and (max-width: 1024px) {
+    .listContainer {
+        margin-top: 20px;
+        padding: 0.5rem;
+    }
+    
+    .listContainer h1 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .gamesGrid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0.8rem;
+    }
+    
+    .loadingContainer,
+    .errorContainer {
+        min-height: 25vh;
+    }
+}
+
+/* === GRID RESPONSIVO AVANÇADO === */
+
+/* Para telas muito largas - força máximo de colunas */
+@media screen and (min-width: 1800px) {
+    .gamesGrid {
+        grid-template-columns: repeat(6, 1fr);
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+}
+
+/* Para telas médias - otimiza para 4 colunas */
+@media screen and (min-width: 1200px) and (max-width: 1599px) {
+    .gamesGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Para tablets - 3 colunas */
+@media screen and (min-width: 900px) and (max-width: 1199px) {
+    .gamesGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Para tablets pequenos - 2 colunas */
+@media screen and (min-width: 600px) and (max-width: 899px) {
+    .gamesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* === MELHORIAS DE PERFORMANCE === */
+
+.gamesGrid {
+    will-change: contents;
+}
+
+/* === ESTADOS ESPECIAIS === */
+
+.gamesGrid:empty::after {
+    content: "Nenhum jogo encontrado";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    font-size: 1.2rem;
+    color: #999;
+    grid-column: 1 / -1;
+}
+
+/* === ANIMAÇÕES SUAVES === */
+
+@media (prefers-reduced-motion: no-preference) {
+    .gamesGrid {
+        animation: fadeIn 0.6s ease-out;
+    }
+    
+    .listContainer h1 {
+        animation: slideDown 0.4s ease-out;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === ACESSIBILIDADE === */
+
+@media (prefers-reduced-motion: reduce) {
+    .gamesGrid,
+    .listContainer h1 {
+        animation: none !important;
+    }
+}
+
+/* === PRINT STYLES === */
+
+@media print {
+    .listContainer {
+        margin-top: 0;
+        padding: 1rem;
+    }
+    
+    .gamesGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}

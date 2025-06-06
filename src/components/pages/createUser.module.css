@@ -1,0 +1,98 @@
+h1{
+    color: #850000;
+}
+.create_user_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #000000 0%, #424242 100%);
+}
+
+.create_user_container .form {
+    max-width: 450px;
+    width: 100%;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+}
+
+/* Media queries para CADASTRO */
+
+/* Tablets e telas médias (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .create_user_container {
+        padding: 15px;
+    }
+    
+    .create_user_container .form {
+        max-width: 90%;
+        padding: 22px;
+    }
+}
+
+/* Smartphones e telas pequenas (até 768px) */
+@media screen and (max-width: 768px) {
+    .create_user_container {
+        padding: 10px;
+        justify-content: flex-start;
+        padding-top: 8vh;
+    }
+    
+    .create_user_container .form {
+        max-width: 95%;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 8px;
+    }
+}
+
+/* Telas muito pequenas (até 480px) */
+@media screen and (max-width: 480px) {
+    .create_user_container {
+        padding: 8px;
+        padding-top: 5vh;
+    }
+    
+    .create_user_container .form {
+        max-width: 100%;
+        padding: 15px;
+        margin: 5px;
+        border-radius: 6px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    }
+}
+
+/* Telas extra pequenas (até 320px) */
+@media screen and (max-width: 320px) {
+    .create_user_container {
+        padding: 5px;
+    }
+    
+    .create_user_container .form {
+        padding: 12px;
+        margin: 2px;
+        font-size: 14px;
+    }
+}
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    .create_user_container,
+    .create_login_container {
+        min-height: auto;
+        padding: 8px;
+        justify-content: center;
+    }
+    
+    .create_user_container .form,
+    .create_login_container .form {
+        margin: 5px 0;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}

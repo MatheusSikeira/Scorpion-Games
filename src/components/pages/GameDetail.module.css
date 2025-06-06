@@ -1,0 +1,77 @@
+.grid {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.container_img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.img_game_detail {
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+}
+
+.titulo {
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.autor {
+  font-size: 24px;
+  color: #910000;
+  margin-bottom: 20px;
+}
+
+.descricao {
+  font-size: 18px;
+ color: #ffffff;
+  text-align: justify;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.container_buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.btn {
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(180deg, #11b335 0%, #13d702 100%);
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(180deg, #13d702 0%, #11b335 100%);
+}
+.preco,
+.ano
+{
+  color: #ffffff;
+}

@@ -1,0 +1,100 @@
+h1{
+    color: #850000;
+}
+.create_login_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #000000 0%, #424242 100%);
+}
+
+.create_login_container .form {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+/* Media queries para LOGIN */
+
+/* Tablets e telas médias (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .create_login_container {
+        padding: 15px;
+    }
+    
+    .create_login_container .form {
+        max-width: 85%;
+        padding: 18px;
+    }
+}
+
+/* Smartphones e telas pequenas (até 768px) */
+@media screen and (max-width: 768px) {
+    .create_login_container {
+        padding: 12px;
+        justify-content: flex-start;
+        padding-top: 10vh;
+    }
+    
+    .create_login_container .form {
+        max-width: 92%;
+        padding: 16px;
+        margin: 8px;
+        border-radius: 6px;
+    }
+}
+
+/* Telas muito pequenas (até 480px) */
+@media screen and (max-width: 480px) {
+    .create_login_container {
+        padding: 8px;
+        padding-top: 6vh;
+    }
+    
+    .create_login_container .form {
+        max-width: 98%;
+        padding: 14px;
+        margin: 4px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+}
+
+/* Telas extra pequenas (até 320px) */
+@media screen and (max-width: 320px) {
+    .create_login_container {
+        padding: 5px;
+        padding-top: 3vh;
+    }
+    
+    .create_login_container .form {
+        max-width: 100%;
+        padding: 10px;
+        margin: 2px;
+        font-size: 14px;
+    }
+}
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    .create_user_container,
+    .create_login_container {
+        min-height: auto;
+        padding: 8px;
+        justify-content: center;
+    }
+    
+    .create_user_container .form,
+    .create_login_container .form {
+        margin: 5px 0;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}

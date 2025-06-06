@@ -1,0 +1,278 @@
+/* Navbar principal */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #fffb00, #ff9900);
+  padding: 0 2rem;
+  z-index: 1000;
+  box-sizing: border-box;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Lista de itens do menu */
+.list {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Itens do menu */
+.menuItem {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 2px solid #000;
+  background-color: rgb(255, 255, 255);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  min-height: 40px;
+  box-sizing: border-box;
+}
+
+.menuItem:hover {
+  background-color: #ffc400;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menuItem:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Ícones do menu */
+.menuIcon {
+  margin-right: 8px;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* Logo principal */
+.logo {
+  width: 100px;
+  height: auto;
+  max-height: 60px;
+  object-fit: contain;
+}
+
+/* Wrapper para personagens */
+.character_wrapper {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 10px;
+}
+
+/* Personagens decorativos */
+.subzero {
+  width: auto;
+  height: 80px;
+  max-width: 400px;
+  object-fit: contain;
+}
+
+.scorpion {
+  width: auto;
+  height: 80px;
+  max-width: 400px;
+  object-fit: contain;
+  margin-left: 0;
+}
+
+/* Botão hamburger (oculto por padrão) */
+.hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  z-index: 1001;
+}
+
+.hamburger:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.hamburger:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.hamburgerIcon {
+  font-size: 28px;
+  color: #000;
+}
+
+/* Overlay para mobile */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Responsividade para tablets */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 1.5rem;
+  }
+
+  .list {
+    gap: 10px;
+  }
+
+  .menuItem {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  .menuIcon {
+    font-size: 16px;
+    margin-right: 6px;
+  }
+
+  .logo {
+    width: 80px;
+  }
+
+  .subzero,
+  .scorpion {
+    height: 50px;
+    max-width: 60px;
+  }
+}
+
+/* Responsividade para smartphones */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0 1rem;
+    height: 70px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .list {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: linear-gradient(180deg, #fffb00, #ffc400);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    padding: 2rem 1rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+
+  .list.active {
+    transform: translateX(0);
+  }
+
+  .menuItem {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+    padding: 15px 20px;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .menuIcon {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  .logo {
+    width: 70px;
+  }
+
+  .subzero,
+  .scorpion {
+    display: none;
+  }
+}
+
+/* Responsividade para telas muito pequenas */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 0.8rem;
+    height: 60px;
+  }
+
+  .list {
+    top: 60px;
+    height: calc(100vh - 60px);
+    padding: 1.5rem 0.8rem;
+  }
+
+  .menuItem {
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+
+  .logo {
+    width: 60px;
+  }
+
+  .hamburger {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hamburgerIcon {
+    font-size: 24px;
+  }
+}
+
+/* Prevenção de overflow quando menu está aberto */
+:global(body.menuOpen) {
+  overflow: hidden;
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .menuItem,
+  .list,
+  .hamburger {
+    transition: none;
+  }
+
+  .menuItem:hover {
+    transform: none;
+  }
+}
+
+/* Estados de foco para acessibilidade */
+.menuItem:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
