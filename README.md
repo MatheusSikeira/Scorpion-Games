@@ -1,8 +1,8 @@
 ### Site da Loja de Jogos Scorpion Games
 
-![Banner do Projeto](./Scorpion-Games/src/assets/ScorpionGames.png)
+![Banner do Projeto](./Scorpion-Games-API/imagens/ScorpionGames.png)
 
-Um projeto feito em React com Banco de Dados SQL.
+Um projeto feito em React com integrações com API Nodejs e Banco de Dados.
 
 ## Sumário
 
@@ -16,16 +16,19 @@ Um site para venda e compra de jogos onde o vendedor pode fazer o cadastro e lis
 
 ## Funcionalidades
 
-- Funcionalidade 1: Tela de login com armazenamento de dados em JSON.
-![Foto do Formulário](./Scorpion-Games/src/assets/screen1.PNG)
-- Funcionalidade 2: Tela de cadastro com armazenamento de dados em JSON.
-![Foto do Formulário](./Scorpion-Games/src/assets/screen2.PNG)
+- Funcionalidade 1: Accordions no menu inicial do site.
+![Foto dos accordions](././Scorpion-Games-API/imagens/cap2.png)
+- Funcionalidade 2: Formulário de cadastro de jogos.
+![Foto do Formulário](././Scorpion-Games-API/imagens/cap1.png)
+![Foto do Formulário](././Scorpion-Games-API/imagens/cap3.png)
+![Foto do Formulário](././Scorpion-Games-API/imagens/cap4.png)
+- Funcionalidade 3: Página de listagem de jogos cadastrados.
+![Foto do Formulário](././Scorpion-Games-API/imagens/cap5.png)
 
 ## Funcionalidades em desevolvimento
 - Funcionalidade 1: Página para comprar jogos.
 - Funcionalidade 2: Envio de critícas e imagens.
 - Funcionalidade 3: Página de favoritos.
-- Funcionalidade 4: Página de listagem de jogos.
 
 ## Uso
 
@@ -34,5 +37,5 @@ Clone o repositório e instale as dependências necessárias:
 ```bash
 git clone https://github.com/MatheusSikeira/Loja-de-Jogos-Front-End.git
 cd seu-projeto
-yarn
-yarn start
+npm install
+npm start
