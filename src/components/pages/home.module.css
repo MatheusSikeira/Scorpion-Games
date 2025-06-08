@@ -1,0 +1,1039 @@
+.home_container {
+    text-align: center;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.home_container h1 {
+    font-size: 2rem;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    color: #850000;
+    font-weight: bold;
+}
+
+.home_container p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.accordions_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 0;
+}
+
+.accordion_item_wrapper {
+    flex: 1 1 70%;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* === CONTAINER DO ACCORDION === */
+
+details.accordion_container {
+    border: none;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, height 0.3s ease;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+details[open].accordion_container {
+    z-index: 2;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+details.accordion_container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* === TÍTULO DO ACCORDION === */
+
+summary.grid_title {
+    list-style: none;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-bottom: 2px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 60px;
+    transition: background-color 0.3s ease;
+    position: relative;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+summary.grid_title::marker,
+summary.grid_title::-webkit-details-marker {
+    display: none;
+}
+
+summary.grid_title:hover {
+    background-color: #ffc400;
+}
+
+details[open] summary.grid_title {
+    background-color: #ffc400;
+    border-bottom: none;
+}
+
+summary.grid_title h3 {
+    font-size: 3.2rem;
+    margin: 0;
+    color: #333;
+    font-weight: 600;
+}
+
+/* === ÍCONES E IMAGENS === */
+
+.title_icon {
+    width: auto;
+    height: 300px;
+    max-width: 300px;
+    object-fit: contain;
+    flex-shrink: 0;
+    margin-right: 80%
+}
+
+.content_image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    max-height: 250px;
+    object-fit: cover;
+}
+
+.kunai_icon {
+    width: 50px;
+    height: auto;
+    transition: transform 0.5s ease-in-out, filter 0.3s ease;
+}
+
+details[open] .kunai_icon {
+    content: url("../../assets/kunai-down.png");
+}
+
+/* === CONTEÚDO DO ACCORDION === */
+
+.accordion_content {
+    padding: 15px;
+    background-color: #fff;
+    border-top: 2px solid #ddd;
+    text-align: center;
+}
+
+.accordion_content p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* === LOGO === */
+
+.logo_home {
+    background-color: #ffffff;
+    margin: 100px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-right: 100%;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.667);
+    box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.667);
+}
+
+.logo_home img {
+    width: 100vh;
+    height: auto;
+    object-fit: contain;
+}
+
+.generos_wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 60px auto; 
+    .home_container {
+    text-align: center;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.home_container h1 {
+    font-size: 2rem;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    color: #850000;
+    font-weight: bold;
+}
+
+.home_container p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.accordions_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 0;
+}
+
+.accordion_item_wrapper {
+    flex: 1 1 70%;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* === CONTAINER DO ACCORDION === */
+
+details.accordion_container {
+    border: none;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, height 0.3s ease;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+details[open].accordion_container {
+    z-index: 2;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+details.accordion_container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* === TÍTULO DO ACCORDION === */
+
+summary.grid_title {
+    list-style: none;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-bottom: 2px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 60px;
+    transition: background-color 0.3s ease;
+    position: relative;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+summary.grid_title::marker,
+summary.grid_title::-webkit-details-marker {
+    display: none;
+}
+
+summary.grid_title:hover {
+    background-color: #ffc400;
+}
+
+details[open] summary.grid_title {
+    background-color: #ffc400;
+    border-bottom: none;
+}
+
+summary.grid_title h3 {
+    font-size: 3.2rem;
+    margin: 0;
+    color: #333;
+    font-weight: 600;
+}
+
+/* === ÍCONES E IMAGENS === */
+
+.title_icon {
+    width: auto;
+    height: 300px;
+    max-width: 300px;
+    object-fit: contain;
+    flex-shrink: 0;
+    margin-right: 80%
+}
+
+.content_image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    max-height: 250px;
+    object-fit: cover;
+}
+
+.kunai_icon {
+    width: 50px;
+    height: auto;
+    transition: transform 0.5s ease-in-out, filter 0.3s ease;
+}
+
+details[open] .kunai_icon {
+    content: url("../../assets/kunai-down.png");
+}
+
+/* === CONTEÚDO DO ACCORDION === */
+
+.accordion_content {
+    padding: 15px;
+    background-color: #fff;
+    border-top: 2px solid #ddd;
+    text-align: center;
+}
+
+.accordion_content p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* === LOGO === */
+
+.logo_home {
+    background-color: #ffffff;
+    margin: 100px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-right: 100%;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.667);
+    box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.667);
+}
+
+.logo_home img {
+    width: 100vh;
+    height: auto;
+    object-fit: contain;
+}
+
+.generos_wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 60px auto;
+    .home_container {
+    text-align: center;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.home_container h1 {
+    font-size: 2rem;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    color: #850000;
+    font-weight: bold;
+}
+
+.home_container p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.accordions_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 0;
+}
+
+.accordion_item_wrapper {
+    flex: 1 1 70%;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* === CONTAINER DO ACCORDION === */
+
+details.accordion_container {
+    border: none;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, height 0.3s ease;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+details[open].accordion_container {
+    z-index: 2;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+details.accordion_container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* === TÍTULO DO ACCORDION === */
+
+summary.grid_title {
+    list-style: none;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-bottom: 2px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 60px;
+    transition: background-color 0.3s ease;
+    position: relative;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+summary.grid_title::marker,
+summary.grid_title::-webkit-details-marker {
+    display: none;
+}
+
+summary.grid_title:hover {
+    background-color: #ffc400;
+}
+
+details[open] summary.grid_title {
+    background-color: #ffc400;
+    border-bottom: none;
+}
+
+summary.grid_title h3 {
+    font-size: 3.2rem;
+    margin: 0;
+    color: #333;
+    font-weight: 600;
+}
+
+/* === ÍCONES E IMAGENS === */
+
+.title_icon {
+    width: auto;
+    height: 300px;
+    max-width: 300px;
+    object-fit: contain;
+    flex-shrink: 0;
+    margin-right: 80%
+}
+
+.content_image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    max-height: 250px;
+    object-fit: cover;
+}
+
+.kunai_icon {
+    width: 50px;
+    height: auto;
+    transition: transform 0.5s ease-in-out, filter 0.3s ease;
+}
+
+details[open] .kunai_icon {
+    content: url("../../assets/kunai-down.png");
+}
+
+/* === CONTEÚDO DO ACCORDION === */
+
+.accordion_content {
+    padding: 15px;
+    background-color: #fff;
+    border-top: 2px solid #ddd;
+    text-align: center;
+}
+
+.accordion_content p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* === LOGO === */
+
+.logo_home {
+    background-color: #ffffff;
+    margin: 100px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-right: 100%;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.667);
+    box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.667);
+}
+
+.logo_home img {
+    width: 100vh;
+    height: auto;
+    object-fit: contain;
+}
+
+.generos_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    min-height: 150px; /* Altura mínima para centralizar */
+    margin: 60px auto;
+    max-width: 1200px;
+    width: 90%;
+    margin: 20px;
+}
+
+.generos_title {
+    background-color: #ffffff;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 30px 60px;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    border-radius: 20px;
+}
+
+.lamina_top,
+.lamina_bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(0deg, #000 0%, #aaa9a9 50%, #000 100%);
+    z-index: 1;
+}
+
+.lamina_top {
+    top: -10px;
+    transform: skewX(45deg);
+}
+
+.lamina_bottom {
+    bottom: -10px;
+    transform: skewX(-45deg);
+}
+
+/* === MEDIA QUERIES === */
+
+@media screen and (max-width: 1200px) {
+    .accordion_item_wrapper {
+        flex: 1 1 45%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .accordion_item_wrapper {
+        flex: 1 1 100%;
+        margin-bottom: 40px;
+    }
+
+    .home_container h1 {
+        font-size: 1.5rem;
+        margin-top: 60px;
+    }
+
+    .home_container p {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .title_icon {
+        width: 120px;
+        height: 120px;
+    }
+
+    .grid_title {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .summary.grid_title h3 {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .title_icon {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Landscape mobile */
+@media screen and (max-height: 600px) and (orientation: landscape) and (max-width: 1024px) {
+    .accordion_item_wrapper {
+        margin-bottom: 20px;
+    }
+}
+
+/* Animações */
+@media (prefers-reduced-motion: no-preference) {
+    .accordion_item_wrapper {
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .accordion_item_wrapper:nth-child(even) {
+        animation-delay: 0.1s;
+    }
+
+    .accordion_item_wrapper:nth-child(odd) {
+        animation-delay: 0.2s;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+
+    .accordion_container,
+    .kunai_icon,
+    .accordion_item_wrapper {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    details.accordion_container:hover {
+        transform: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .home_container h1 {
+        font-size: 1.3rem;
+    }
+
+    .home_container p {
+        font-size: 0.95rem;
+    }
+
+    .logo_home {
+        flex-direction: column;
+    }
+
+    .logo_home img {
+        max-width: 100%;
+        margin-left: 0;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.generos_title {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+}
+
+.generos_title {
+    background-color: #ffffff;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 30px 60px;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    border-radius: 20px;
+}
+
+.lamina_top,
+.lamina_bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(0deg, #000 0%, #aaa9a9 50%, #000 100%);
+    z-index: 1;
+}
+
+.lamina_top {
+    top: -10px;
+    transform: skewX(45deg);
+}
+
+.lamina_bottom {
+    bottom: -10px;
+    transform: skewX(-45deg);
+}
+
+/* === MEDIA QUERIES === */
+
+@media screen and (max-width: 1200px) {
+    .accordion_item_wrapper {
+        flex: 1 1 45%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .accordion_item_wrapper {
+        flex: 1 1 100%;
+        margin-bottom: 40px;
+    }
+
+    .home_container h1 {
+        font-size: 1.5rem;
+        margin-top: 60px;
+    }
+
+    .home_container p {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .title_icon {
+        width: 120px;
+        height: 120px;
+    }
+
+    .grid_title {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .summary.grid_title h3 {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .title_icon {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Landscape mobile */
+@media screen and (max-height: 600px) and (orientation: landscape) and (max-width: 1024px) {
+    .accordion_item_wrapper {
+        margin-bottom: 20px;
+    }
+}
+
+/* Animações */
+@media (prefers-reduced-motion: no-preference) {
+    .accordion_item_wrapper {
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .accordion_item_wrapper:nth-child(even) {
+        animation-delay: 0.1s;
+    }
+
+    .accordion_item_wrapper:nth-child(odd) {
+        animation-delay: 0.2s;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+
+    .accordion_container,
+    .kunai_icon,
+    .accordion_item_wrapper {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    details.accordion_container:hover {
+        transform: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .home_container h1 {
+        font-size: 1.3rem;
+    }
+
+    .home_container p {
+        font-size: 0.95rem;
+    }
+
+    .logo_home {
+        flex-direction: column;
+    }
+
+    .logo_home img {
+        max-width: 100%;
+        margin-left: 0;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.generos_title {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+}
+
+.generos_title {
+    background-color: #ffffff;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 30px 60px;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    border-radius: 20px;
+}
+
+.lamina_top,
+.lamina_bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(0deg, #000 0%, #aaa9a9 50%, #000 100%);
+    z-index: 1;
+}
+
+.lamina_top {
+    top: -10px;
+    transform: skewX(45deg);
+}
+
+.lamina_bottom {
+    bottom: -10px;
+    transform: skewX(-45deg);
+}
+
+/* === MEDIA QUERIES === */
+
+@media screen and (max-width: 1200px) {
+    .accordion_item_wrapper {
+        flex: 1 1 45%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .accordion_item_wrapper {
+        flex: 1 1 100%;
+        margin-bottom: 40px;
+    }
+
+    .home_container h1 {
+        font-size: 1.5rem;
+        margin-top: 60px;
+    }
+
+    .home_container p {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .title_icon {
+        width: 120px;
+        height: 120px;
+    }
+
+    .grid_title {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .summary.grid_title h3 {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .title_icon {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Landscape mobile */
+@media screen and (max-height: 600px) and (orientation: landscape) and (max-width: 1024px) {
+    .accordion_item_wrapper {
+        margin-bottom: 20px;
+    }
+}
+
+/* Animações */
+@media (prefers-reduced-motion: no-preference) {
+    .accordion_item_wrapper {
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .accordion_item_wrapper:nth-child(even) {
+        animation-delay: 0.1s;
+    }
+
+    .accordion_item_wrapper:nth-child(odd) {
+        animation-delay: 0.2s;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+
+    .accordion_container,
+    .kunai_icon,
+    .accordion_item_wrapper {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    details.accordion_container:hover {
+        transform: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .home_container h1 {
+        font-size: 1.3rem;
+    }
+
+    .home_container p {
+        font-size: 0.95rem;
+    }
+
+    .logo_home {
+        flex-direction: column;
+    }
+
+    .logo_home img {
+        max-width: 100%;
+        margin-left: 0;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

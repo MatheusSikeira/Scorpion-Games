@@ -143,7 +143,7 @@ const NavBar = () => {
 
         {/* Scorpion (oculto em mobile) */}
         <img
-          src="./src/assets/scor.png"
+          src="./src/assets/scorpion_homebar.png"
           alt="Scorpion MK9"
           className={style.scorpion}
         />

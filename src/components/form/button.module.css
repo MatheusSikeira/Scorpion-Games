@@ -12,7 +12,7 @@ button{
     transition: .4s;
     transition: all 0.3s ease;
     box-shadow: 0 8px 15px rgba(251, 255, 0, 0.8);
-    margin: 10px;
+    margin: auto;
 }
 button:hover{
     background-color: #ff7300;

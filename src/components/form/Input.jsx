@@ -1,4 +1,4 @@
-import styles from "./Input.module.css"
+import styles from "./input.module.css"
 
 const Input = ({type, name, id, placeholder, value, text, handlerChange})=>{
     return(

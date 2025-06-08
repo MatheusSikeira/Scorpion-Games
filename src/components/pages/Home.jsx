@@ -1,5 +1,5 @@
 import styles from './home.module.css';
-import logo from '../../assets/banner_scorpion.png';
+import logo from '../../assets/Banner_Scorpion.png';
 
 const Home = () => {
   return (
@@ -7,8 +7,10 @@ const Home = () => {
       <div className={styles.logo_home}>
         <img src={logo} alt="Logo da Scorpion Games" />
       </div>
-      <div className={styles.generos}>
-      <h1>Gêneros</h1>
+      <div className={styles.generos_wrapper}>
+        <div className={styles.lamina_top}></div>
+        <h1 className={styles.generos_title}>Gêneros</h1>
+        <div className={styles.lamina_bottom}></div>
       </div>
       <div className={styles.accordions_wrapper}>
         {/* Accordion 1 */}
