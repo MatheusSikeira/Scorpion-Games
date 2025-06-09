@@ -8,25 +8,38 @@ router.get('/', (req, res) => {
     return res.status(200).json({ status: 'TESTE DE CONEXÃO COM A API!' });
 });
 
-router.post('/inserirUsuario', (req, res) => {
-    let { nome_usuario, email_usuario, senha_usuario } = req.body;
+// Rota para criar usuário cliente ou vendedor
+router.post('/usuarios', (req, res) => {
+    const { nome_usuario, email_usuario, senha_usuario, tipo_usuario, nome_loja, link_loja } = req.body;
 
-    if (!nome_usuario || !email_usuario || !senha_usuario) {
+    if (!nome_usuario || !email_usuario || !senha_usuario || !tipo_usuario) {
         return res.status(400).json({
             errorStatus: true,
-            mensageStatus: 'DADOS INVÁLIDOS: Todos os campos são obrigatórios.'
+            mensageStatus: 'DADOS INVÁLIDOS: nome, email, senha e tipo_usuario são obrigatórios.'
+        });
+    }
+
+    // Se for vendedor, nome_loja e link_loja são obrigatórios
+    if (tipo_usuario === 'vendedor' && (!nome_loja || !link_loja)) {
+        return res.status(400).json({
+            errorStatus: true,
+            mensageStatus: 'DADOS INVÁLIDOS: nome_loja e link_loja são obrigatórios para vendedor.'
         });
     }
 
     modelUsuario.create({
         nome_usuario,
         email_usuario,
-        senha_usuario
+        senha_usuario,
+        tipo_usuario,
+        nome_loja: tipo_usuario === 'vendedor' ? nome_loja : null,
+        link_loja: tipo_usuario === 'vendedor' ? link_loja : null
     })
-        .then(() => {
+        .then((usuario) => {
             return res.status(201).json({
                 errorStatus: false,
-                mensageStatus: 'USUÁRIO INSERIDO COM SUCESSO'
+                mensageStatus: 'USUÁRIO INSERIDO COM SUCESSO',
+                data: usuario
             });
         })
         .catch((error) => {

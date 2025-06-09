@@ -10,52 +10,51 @@ router.get('/', (req, res) => {
 // Inserir novo jogo
 router.post('/inserirJogo', async (req, res) => {
   try {
+    console.log('Dados recebidos:', req.body); // Debug log
+
     const {
       nome,
       desenvolvedor,
-      plataforma,
+      cod_categoria,
+      plataforma_id,
       preco,
       imagem_url,
       descricao_jogo,
       ano_lancamento,
-      usuario_id,
-      cod_categoria
+      usuario_id
     } = req.body;
 
-    if (
-      !nome || !desenvolvedor || !plataforma || !preco ||
-      !descricao_jogo || !ano_lancamento || !usuario_id || !cod_categoria
-    ) {
+    // Validação dos campos obrigatórios
+    if (!nome || !desenvolvedor || !cod_categoria || !plataforma_id || !preco || !descricao_jogo || !ano_lancamento) {
       return res.status(400).json({
         errorStatus: true,
-        mensageStatus: 'Campos obrigatórios faltando'
+        mensageStatus: 'Preencha todos os campos obrigatórios'
       });
     }
 
     const novoJogo = await modelJogo.create({
       nome,
       desenvolvedor,
-      plataforma,
+      cod_categoria,
+      plataforma_id,
       preco,
-      imagem_url,
+      imagem_url: imagem_url || null,
       descricao_jogo,
       ano_lancamento,
-      usuario_id,
-      cod_categoria
+      usuario_id
     });
 
     res.status(201).json({
       errorStatus: false,
-      mensageStatus: 'Jogo inserido com sucesso',
-      data: novoJogo
+      mensageStatus: 'Jogo cadastrado com sucesso',
+      jogo: novoJogo
     });
 
   } catch (error) {
-    console.error('Erro ao inserir jogo:', error);
+    console.error('Erro ao inserir jogo:', error); // Debug log
     res.status(500).json({
       errorStatus: true,
-      mensageStatus: 'Erro interno no servidor',
-      errorObject: process.env.NODE_ENV === 'development' ? error : {}
+      mensageStatus: `Erro ao cadastrar jogo: ${error.message}`
     });
   }
 });

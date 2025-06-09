@@ -17,9 +17,13 @@ const modelJogo = connection.define(
       type: Sequelize.STRING(255),
       allowNull: false
     },
-    plataforma: {
-      type: Sequelize.STRING(255),
-      allowNull: false
+    plataforma_id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'plataformas',
+        key: 'id_plataforma'
+      }
     },
     preco: {
       type: Sequelize.DECIMAL(10, 2),
@@ -54,6 +58,9 @@ const modelJogo = connection.define(
   }
 );
 
-// modelJogo.sync({ alter: true });
+modelJogo.sync({ alter: true });
+
+const modelPlataforma = require('./modelPlataforma');
+modelJogo.belongsTo(modelPlataforma, { foreignKey: 'plataforma_id' });
 
 module.exports = modelJogo;

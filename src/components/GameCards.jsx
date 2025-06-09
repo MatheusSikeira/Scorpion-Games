@@ -49,9 +49,16 @@ const GameCards = ({ nome, desenvolvedor, plataforma, preco, imagem, id_jogo, on
 
   return (
     <div className={style.card}>
+      <div className={style.form_title_wrapper}>
+        <div className={style.lamina_top}></div>
+        <div className={style.form_title_container}>
+          <div className={style.form_title}>{nome}</div>
+        </div>
+        <div className={style.lamina_bottom}></div>
+      </div>
+
       <img src={imagem} alt={nome} className={style.gameImage} loading="lazy" />
       <div className={style.cardContent}>
-        <h3>{nome}</h3>
         <p>Desenvolvedor: {desenvolvedor}</p>
         <p>Plataforma: {plataforma}</p>
         <p className={style.price}>Preço: R$ {parseFloat(preco).toFixed(2)}</p>
@@ -66,7 +73,6 @@ const GameCards = ({ nome, desenvolvedor, plataforma, preco, imagem, id_jogo, on
         </div>
       </div>
 
-      {/* Componente correto para mostrar os toasts */}
       <ToastContainer position="top-right" autoClose={4000} />
     </div>
   );

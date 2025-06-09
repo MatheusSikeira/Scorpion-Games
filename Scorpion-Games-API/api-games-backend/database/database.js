@@ -15,7 +15,7 @@ PARAMETROS DO SEQUELIZE
 const connection = new Sequelize(
     'scorpion_games',
     'root',
-    'etecembu@123',
+    'supermaximodosquarks0987@',
     {
         host: 'localhost',
         port: '3306',

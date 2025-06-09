@@ -9,7 +9,9 @@ const Home = () => {
       </div>
       <div className={styles.generos_wrapper}>
         <div className={styles.lamina_top}></div>
-        <h1 className={styles.generos_title}>Gêneros</h1>
+        <div className={styles.generos_title_container}>
+          <div className={styles.generos_title}>Gêneros</div>
+        </div>
         <div className={styles.lamina_bottom}></div>
       </div>
       <div className={styles.accordions_wrapper}>

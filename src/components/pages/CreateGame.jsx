@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import style from "./createGame.module.css";
-import Input from "../form/Input";
-import Select from "../form/Select";
-import Button from "../form/Button";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -11,7 +8,7 @@ const CreateGame = () => {
     nome: '',
     desenvolvedor: '',
     cod_categoria: '',
-    plataforma: '',
+    plataforma_id: '',
     preco: '',
     imagem_url: '',
     descricao_jogo: '',
@@ -20,70 +17,118 @@ const CreateGame = () => {
   });
 
   const [categories, setCategories] = useState([]);
-
-  const plataformas = [
-    { value: 'PC', label: 'PC' },
-    { value: 'PlayStation', label: 'PlayStation' },
-    { value: 'Xbox', label: 'Xbox' },
-    { value: 'Nintendo Switch', label: 'Nintendo Switch' },
-    { value: 'Mobile', label: 'Mobile' }
-  ];
+  const [plataformas, setPlataformas] = useState([]);
+  const [imagemFile, setImagemFile] = useState(null);
+  const [imagemPreview, setImagemPreview] = useState('');
+  const [invalidFields, setInvalidFields] = useState({});
 
   const handlerChangeGame = (event) => {
     setGame({
       ...game,
       [event.target.name]: event.target.value
     });
+    setInvalidFields({ ...invalidFields, [event.target.name]: false });
+  };
+
+  // Novo handler para upload de imagem do dispositivo
+  const handleImagemChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      try {
+        // Validate file size (max 5MB)
+        if (file.size > 5 * 1024 * 1024) {
+          toast.error("Arquivo muito grande. Máximo 5MB permitido.");
+          return;
+        }
+
+        // Validate file type
+        if (!file.type.match(/image\/(jpeg|jpg|png|gif|webp)/i)) {
+          toast.error("Formato de arquivo não suportado. Use JPG, PNG, GIF ou WEBP.");
+          return;
+        }
+
+        setImagemFile(file);
+        setImagemPreview(URL.createObjectURL(file));
+        setGame({ ...game, imagem_url: '' });
+
+      } catch (error) {
+        console.error("Erro ao processar imagem:", error);
+        toast.error("Erro ao processar a imagem. Tente novamente.");
+      }
+    }
   };
 
   const submit = async (event) => {
     event.preventDefault();
 
-    if (!game.nome || !game.desenvolvedor || !game.cod_categoria || !game.plataforma || !game.preco || !game.ano_lancamento) {
-      toast.error("Preencha todos os campos obrigatórios.");
-      return;
-    }
-
-    const precoNumerico = parseFloat(game.preco);
-    const ano = parseInt(game.ano_lancamento);
-
-    if (isNaN(precoNumerico) || precoNumerico < 0) {
-      toast.error("O preço deve ser um valor numérico maior ou igual a zero.");
-      return;
-    }
-
-    if (isNaN(ano) || ano < 1950 || ano > new Date().getFullYear() + 1) {
-      toast.error("Insira um ano de lançamento válido.");
-      return;
-    }
-
     try {
-      const response = await fetch('http://localhost:5000/inserirJogo', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(game)
-      });
+        let imagemUrl = game.imagem_url;
 
-      if (!response.ok) throw new Error('Erro ao cadastrar jogo');
+        if (imagemFile) {
+            const formData = new FormData();
+            formData.append('imagem', imagemFile);
 
-      const data = await response.json();
-      toast.success('Jogo cadastrado com sucesso!');
+            const uploadResp = await fetch('http://localhost:5000/upload-imagem', {
+                method: 'POST',
+                body: formData,
+            });
 
-      setGame({
-        nome: '',
-        desenvolvedor: '',
-        cod_categoria: '',
-        plataforma: '',
-        preco: '',
-        imagem_url: '',
-        descricao_jogo: '',
-        ano_lancamento: '',
-        usuario_id: 1
-      });
+            if (!uploadResp.ok) {
+                const errorData = await uploadResp.json();
+                throw new Error(errorData.message || 'Erro ao enviar imagem');
+            }
+
+            const uploadData = await uploadResp.json();
+            imagemUrl = uploadData.url;
+        }
+
+        const gameData = {
+            ...game,
+            imagem_url: imagemUrl,
+            // Ensure numeric fields are properly formatted
+            preco: parseFloat(game.preco),
+            ano_lancamento: parseInt(game.ano_lancamento),
+            cod_categoria: parseInt(game.cod_categoria),
+            plataforma_id: parseInt(game.plataforma_id)
+        };
+
+        console.log('Enviando dados:', gameData); // Debug log
+
+        const response = await fetch('http://localhost:5000/inserirJogo', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(gameData)
+        });
+
+        const responseData = await response.json();
+
+        if (!response.ok) {
+            throw new Error(responseData.mensageStatus || 'Erro ao cadastrar jogo');
+        }
+
+        toast.success('Jogo cadastrado com sucesso!');
+
+        // Reset form
+        setGame({
+            nome: '',
+            desenvolvedor: '',
+            cod_categoria: '',
+            plataforma_id: '',
+            preco: '',
+            imagem_url: '',
+            descricao_jogo: '',
+            ano_lancamento: '',
+            usuario_id: 1
+        });
+        setImagemFile(null);
+        setImagemPreview('');
+        setInvalidFields({});
 
     } catch (error) {
-      console.error("Erro:", error);
-      toast.error('Erro ao cadastrar jogo');
+        console.error("Erro detalhado:", error);
+        toast.error(error.message);
     }
   };
 
@@ -104,33 +149,207 @@ const CreateGame = () => {
     fetchCategories();
   }, []);
 
+  useEffect(() => {
+    const fetchPlataformas = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/plataformas');
+        const data = await response.json();
+        const plataformasFormatadas = Array.isArray(data)
+          ? data.map(plat => ({
+              value: plat.id_plataforma,
+              label: plat.nome_plataforma
+            }))
+          : [];
+        setPlataformas(plataformasFormatadas);
+      } catch (error) {
+        console.error("Erro ao carregar plataformas:", error);
+      }
+    };
+    fetchPlataformas();
+  }, []);
+
   return (
     <section className={style.create_game_container}>
-      <h1>Cadastro do Jogo</h1>
+      {/* Título com Lâminas */}
+      <div className={style.form_title_wrapper}>
+        <div className={style.lamina_top}></div>
+        <div className={style.form_title_container}>
+          <div className={style.form_title}>Cadastro do Jogo</div>
+        </div>
+        <div className={style.lamina_bottom}></div>
+      </div>
 
-      <form onSubmit={submit}>
+      <form onSubmit={submit} className={style.oriental_border}>
+        <div className={style.form_group}>
+          <label htmlFor="nome">Nome do Jogo:</label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            value={game.nome}
+            onChange={handlerChangeGame}
+            placeholder="Digite o nome do jogo"
+            required
+            style={invalidFields.nome ? { borderColor: "#ff5252", background: "#fff6f6" } : {}}
+          />
+          {invalidFields.nome && (
+            <span style={{ color: "#ff5252", fontSize: "0.95rem", marginTop: "4px" }}>
+              Preencha esse campo
+            </span>
+          )}
+        </div>
 
-        <Input type="text" name="nome" text="Nome do Jogo:" value={game.nome} handlerChange={handlerChangeGame} placeholder="Digite o nome do jogo" />
+        <div className={style.form_group}>
+          <label htmlFor="desenvolvedor">Desenvolvedor:</label>
+          <input
+            type="text"
+            id="desenvolvedor"
+            name="desenvolvedor"
+            value={game.desenvolvedor}
+            onChange={handlerChangeGame}
+            placeholder="Digite o desenvolvedor"
+            required
+            style={invalidFields.desenvolvedor ? { borderColor: "#ff5252", background: "#fff6f6" } : {}}
+          />
+          {invalidFields.desenvolvedor && (
+            <span style={{ color: "#ff5252", fontSize: "0.95rem", marginTop: "4px" }}>
+              Preencha esse campo
+            </span>
+          )}
+        </div>
 
-        <Input type="text" name="desenvolvedor" text="Desenvolvedor:" value={game.desenvolvedor} handlerChange={handlerChangeGame} placeholder="Digite o desenvolvedor" />
+        <div className={style.form_group}>
+          <label htmlFor="cod_categoria">Categoria:</label>
+          <select
+            id="cod_categoria"
+            name="cod_categoria"
+            value={game.cod_categoria}
+            onChange={handlerChangeGame}
+            required
+            style={invalidFields.cod_categoria ? { borderColor: "#ff5252", background: "#fff6f6" } : {}}
+          >
+            <option value="">Selecione uma categoria</option>
+            {categories.map(category => (
+              <option key={category.value} value={category.value}>
+                {category.label}
+              </option>
+            ))}
+          </select>
+          {invalidFields.cod_categoria && (
+            <span style={{ color: "#ff5252", fontSize: "0.95rem", marginTop: "4px" }}>
+              Preencha esse campo
+            </span>
+          )}
+        </div>
 
-        <Select name="cod_categoria" text="Categoria:" value={game.cod_categoria} handlerChange={handlerChangeGame} options={categories} />
+        <div className={style.form_group}>
+          <label htmlFor="plataforma_id">Plataforma:</label>
+          <select
+            id="plataforma_id"
+            name="plataforma_id"
+            value={game.plataforma_id}
+            onChange={handlerChangeGame}
+            required
+            style={invalidFields.plataforma_id ? { borderColor: "#ff5252", background: "#fff6f6" } : {}}
+          >
+            <option value="">Selecione uma plataforma</option>
+            {plataformas.map(plataforma => (
+              <option key={plataforma.value} value={plataforma.value}>
+                {plataforma.label}
+              </option>
+            ))}
+          </select>
+          {invalidFields.plataforma_id && (
+            <span style={{ color: "#ff5252", fontSize: "0.95rem", marginTop: "4px" }}>
+              Preencha esse campo
+            </span>
+          )}
+        </div>
 
-        <Select name="plataforma" text="Plataforma:" value={game.plataforma} handlerChange={handlerChangeGame} options={plataformas} />
+        <div className={style.form_group}>
+          <label htmlFor="preco">Preço (R$):</label>
+          <input
+            type="number"
+            id="preco"
+            name="preco"
+            value={game.preco}
+            onChange={handlerChangeGame}
+            step="0.01"
+            min="0"
+            placeholder="Digite o preço"
+            required
+            style={invalidFields.preco ? { borderColor: "#ff5252", background: "#fff6f6" } : {}}
+          />
+          {invalidFields.preco && (
+            <span style={{ color: "#ff5252", fontSize: "0.95rem", marginTop: "4px" }}>
+              Preencha esse campo
+            </span>
+          )}
+        </div>
 
-        <Input type="number" name="preco" text="Preço (R$):" value={game.preco} handlerChange={handlerChangeGame} step="0.01" placeholder="Digite o preço" />
+        <div className={style.form_group}>
+          <label htmlFor="ano_lancamento">Ano de Lançamento:</label>
+          <input
+            type="number"
+            id="ano_lancamento"
+            name="ano_lancamento"
+            value={game.ano_lancamento}
+            onChange={handlerChangeGame}
+            min="1950"
+            max={new Date().getFullYear() + 1}
+            placeholder="Exemplo: 2025"
+            required
+            style={invalidFields.ano_lancamento ? { borderColor: "#ff5252", background: "#fff6f6" } : {}}
+          />
+          {invalidFields.ano_lancamento && (
+            <span style={{ color: "#ff5252", fontSize: "0.95rem", marginTop: "4px" }}>
+              Preencha esse campo
+            </span>
+          )}
+        </div>
 
-         <Input type="number" name="ano_lancamento" text="Ano de Lançamento:" value={game.ano_lancamento} handlerChange={handlerChangeGame} placeholder="Exemplo: 2025" />
+        <div className={style.form_group}>
+          <label htmlFor="descricao_jogo">Descrição do Jogo:</label>
+          <textarea
+            id="descricao_jogo"
+            name="descricao_jogo"
+            value={game.descricao_jogo}
+            onChange={handlerChangeGame}
+            placeholder="Insira uma descrição do jogo"
+            rows="4"
+          />
+        </div>
 
-        <Input type="text" name="descricao_jogo" text="Descrição do Jogo:" value={game.descricao_jogo} handlerChange={handlerChangeGame} placeholder="Insira uma descrição do jogo" />
+        <div className={style.form_group}>
+          <label htmlFor="imagem_url">URL da Imagem:</label>
+          <input
+            type="url"
+            id="imagem_url"
+            name="imagem_url"
+            value={game.imagem_url}
+            onChange={handlerChangeGame}
+            placeholder="Cole a URL da imagem"
+            disabled={!!imagemFile}
+          />
+        </div>
 
-        <Input type="url" name="imagem_url" text="URL da Imagem:" value={game.imagem_url} handlerChange={handlerChangeGame} placeholder="Cole a URL da imagem" />
+        <div className={style.form_group}>
+          <label htmlFor="imagem_file">Ou envie uma imagem do seu dispositivo:</label>
+          <input
+            type="file"
+            id="imagem_file"
+            name="imagem_file"
+            accept="image/*"
+            onChange={handleImagemChange}
+            disabled={!!game.imagem_url}
+          />
+        </div>
 
-        {game.imagem_url && (
+        {(imagemPreview || game.imagem_url) && (
           <div className={style.preview_container}>
             <label>Pré-visualização da Capa:</label>
             <img
-              src={game.imagem_url}
+              src={imagemPreview || game.imagem_url}
               alt="Capa do jogo"
               className={style.image_preview}
               onError={(e) => {
@@ -140,10 +359,25 @@ const CreateGame = () => {
           </div>
         )}
 
-        <Button type="submit" label="Salvar" />
+        <div className={style.form_group}>
+          <button type="submit" className={style.submit_button}>
+            Salvar Jogo
+          </button>
+        </div>
       </form>
 
-      <ToastContainer />
+      <ToastContainer 
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </section>
   );
 };
